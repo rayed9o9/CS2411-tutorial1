@@ -67,6 +67,7 @@ Open **Command Prompt** and navigate to the directory containing `design.ui`. Ru
 
 ```bash
 pyuic5 -x my_ui.ui -o my_ui.py
+```
 
 
 ## Option 2: Loading `.ui` Files Directly in Python Code
@@ -83,6 +84,26 @@ This method involves loading the `.ui` file at runtime using PyQt5's `uic` modul
 
 #### 2. Load the `.ui` File in Your Python Script (files on the repo)
 
-Create a Python script, e.g., `load_ui.py`, and load the `.ui` file:
+Create a Python script, e.g., `load_ui.py`, and load the `.ui` file, and include the ui file in the code:
+```
+import sys
+from PyQt5 import QtWidgets, uic
+
+class ExampleApp(QtWidgets.QMainWindow):
+    def __init__(self):
+        super().__init__()
+        uic.loadUi('design.ui', self)
+        # Connect signals and slots here
+
+def main():
+    app = QtWidgets.QApplication(sys.argv)
+    window = ExampleApp()
+    window.show()
+    sys.exit(app.exec_())
+
+if __name__ == '__main__':
+    main()
+```
+
 
 
