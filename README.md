@@ -92,7 +92,7 @@ from PyQt5 import QtWidgets, uic
 class ExampleApp(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
-        uic.loadUi('design.ui', self)
+        uic.loadUi('my_ui.ui', self)
         # Connect signals and slots here
 
 def main():
