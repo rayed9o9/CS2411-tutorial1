@@ -47,3 +47,59 @@ Open **Command Prompt** and run:
 
 ```bash
 python --version
+
+## Option 1: Converting `.ui` Files to Python Modules
+
+In this method, you use `pyuic5` to convert the `.ui` file into a Python script that can be imported into your application.
+
+### Steps:
+
+#### 1. Design Your GUI in Qt Designer
+
+- Open **Qt Designer**.
+- Design your interface.
+- Save the file as `design.ui`.
+
+#### 2. Convert the `.ui` File to a `.py` File
+
+Open **Command Prompt** and navigate to the directory containing `design.ui`. Run:
+
+```bash
+pyuic5 -x design.ui -o design.py
+
+
+## Option 2: Loading `.ui` Files Directly in Python Code
+
+This method involves loading the `.ui` file at runtime using PyQt5's `uic` module.
+
+### Steps:
+
+#### 1. Design Your GUI in Qt Designer
+
+- Open **Qt Designer**.
+- Design your interface.
+- Save the file as `design.ui`.
+
+#### 2. Load the `.ui` File in Your Python Script
+
+Create a Python script, e.g., `main.py`, and load the `.ui` file:
+
+```python
+import sys
+from PyQt5 import QtWidgets, uic
+
+class ExampleApp(QtWidgets.QMainWindow):
+    def __init__(self):
+        super().__init__()
+        uic.loadUi('design.ui', self)
+        # Connect signals and slots here
+
+def main():
+    app = QtWidgets.QApplication(sys.argv)
+    window = ExampleApp()
+    window.show()
+    sys.exit(app.exec_())
+
+if __name__ == '__main__':
+    main()
+
